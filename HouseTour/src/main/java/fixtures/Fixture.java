@@ -1,5 +1,50 @@
 package fixtures;
 
-public class Fixture {
+public abstract class Fixture {
+	
+	// Instance Variables
+	String name;
+	String shortDescription;
+	String longDescription;
+	
+	// Empty Constructor
+	Fixture(){
+		
+	}
+	
+	// Constructor
+	Fixture(String name, String shortDescription, String longDescription){
+		//super(name, shortDescription, longDescription);
+		this.name = name;
+		this.shortDescription = shortDescription;
+		this.longDescription = longDescription;
+	}
 
-}
+	// Getters and Setters
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getShortDescription() {
+		return this.shortDescription;
+	}
+
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
+	}
+
+	public String getLongDescription() {
+		return this.longDescription;
+	}
+
+	public void setLongDescription(String longDescription) {
+		this.longDescription = longDescription;
+	}
+	
+	
+	
+}// end class
