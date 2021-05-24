@@ -6,7 +6,7 @@ public class Room extends Fixture {
 
 	public Room(String name, String shortDescription, String longDescription) {
 		super(name, shortDescription, longDescription);
-		this.exits = new Room[4]; // size is your choice
+		this.exits = new Room[6]; // size is your choice for how many exits you want
 	}
 		
 	public Room[] getExits() {
@@ -18,24 +18,40 @@ public class Room extends Fixture {
 	//use the direction to return a Room from the exits array
 	/*For example if I always save the south exit at position 0 in my exits array when I define my code in the first
 	place, then I could write out logic like the following.*/
+		int index = 0;
 		direction = direction.toUpperCase();
+		switch (direction) {
+		case "NORTH":
+			index = 0;
+			break;
+		case "SOUTH":
+			index = 1;
+			break;
+		case "EAST":
+			index = 2;
+			break;
+		case "WEST":
+			index = 3;
+			break;
+		case "SOUTHWEST":
+			index = 4;
+			break;
+		case "NORTHEAST":
+			index = 5;
+			break;
+		default:
+			System.out.println("\nYour fingers must've slipped... where do you want to go?");
+		}
 		
-		if(direction.equals("NORTH")){
-			return exits[0];
-		}
-		if(direction.equals("SOUTH")){
-			return exits[1];
-		}
-		if(direction.equals("EAST")){
-			return exits[2];
-		}
-		if(direction.equals("WEST")){
-			return exits[3];
-		}
-		else {
-			System.out.println("There is no exit in that direction!");
+		// If statement checks if there is actually a room in certain direction
+		if (index >= this.exits.length || this.exits[index] == null) {
+			System.out.println("There is no room in that direction");
+			
+			// Return the current room is there is not a room in that direction
 			return this;
 		}
+		
+		return this.exits[index];
 		
 	}
 	

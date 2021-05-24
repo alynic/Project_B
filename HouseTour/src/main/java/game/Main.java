@@ -6,8 +6,8 @@ import fixtures.Room;
 
 public class Main {
 	
-	/* Setup rooms */
-	private static RoomManager roomManager = new RoomManager(4);
+	/* Instantiate roomManager object and set many rooms*/
+	private static RoomManager roomManager = new RoomManager(10);
 	/* Controls when game is running */
 	private static boolean valid = true;
 	
@@ -19,19 +19,21 @@ public class Main {
 		/* Create player and set up their currentRoom to be the startingRoom */
 		Player player = new Player();
 		
-		System.out.println("Here, we can print a message about"
-				+ "how to play the game. "
-				+ "\nIncluding directions and what commands to use..."
-				+ "\nYou can also save this message as a method which prints "
-				+ "\nto the console, if you want to be able to print"
-				+ "\nthe instructions at any time...");
+		System.out.println("==Tour the Ong Residence==\n" +
+				"This is a tour of my grandparent's place where I'm currently staying at right now. \n" +
+				"I'd like to dedicate this tour to my grandpa who passed away on April 15th, 2021. \n" +
+				"Rest in Peace, Tatay. We love you.");
 		
 		/* Set up their currentRoom to be the startingRoom */
 		player.setCurrentRoom(roomManager.getStartingRoom());
 		
+		/* While loops runs the program until user 'quit's */
 		while(valid) {
+			/* Prints out current room the player is in */
 			printRoom(player);
+			/* Collects user's input and splits it into parts by words saved into an array */
 			String[] input = collectInput();
+			/* Takes the input array turns each word/element into an action and direction */
 			parse(input,player);
 		}
 		
@@ -48,8 +50,8 @@ public class Main {
 		 * player's current room, similar to the above image.
 		 */
 		
-		System.out.println(":::: CURRENT ROOM ::::");
-		System.out.println("Name: " + player.getCurrentRoom().getName());
+		System.out.println("\n:::: CURRENT ROOM ::::\n");
+		System.out.println("Room Name: " + player.getCurrentRoom().getName());
 		System.out.println("Short Desc: " + player.getCurrentRoom().getShortDescription());
 		System.out.println("Long Desc: " + player.getCurrentRoom().getLongDescription());
 		// You can also print information about connecting rooms here...
@@ -66,13 +68,13 @@ public class Main {
 		
 		Scanner scanner = new Scanner(System.in);
 		String input = scanner.nextLine();
-		scanner.close();
+	//	scanner.close();
 		
 		String[] phrase = input.split(" ");
 		return phrase;
 	}
 		
-	private static void parse(String[] command, Player player) {
+	private static void parse(String[] input, Player player) {
 		/*
 		 * The parse(String[], Player) method will take the output of the above
 		 * collectInput() method and a player object, and will resolve that command.
@@ -83,15 +85,15 @@ public class Main {
 		 * direction moved)
 		 */
 		
-		String action = command[0].toUpperCase().intern();
+		String action = input[0].toUpperCase().intern();
 		String direction = null;
 		
-		if (command.length > 1) {
-			direction = command[1].toUpperCase().intern();
+		if (input.length > 1) {
+			direction = input[1].toUpperCase().intern();
 		}
 		
 		if (action == "GO" | action == "MOVE") {
-			System.out.println("You try to move: " + direction);
+			System.out.println("\nYou move: " + direction);
 			Room move = player.getCurrentRoom().getExit(direction);
 			player.setCurrentRoom(move);
 		} else if (action == "QUIT") {
