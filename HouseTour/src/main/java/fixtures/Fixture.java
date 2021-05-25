@@ -14,7 +14,6 @@ public abstract class Fixture {
 	
 	// Constructor
 	Fixture(String name, String shortDescription, String longDescription){
-		//super(name, shortDescription, longDescription);
 		this.name = name;
 		this.shortDescription = shortDescription;
 		this.longDescription = longDescription;

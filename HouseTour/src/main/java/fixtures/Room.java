@@ -6,7 +6,7 @@ public class Room extends Fixture {
 
 	public Room(String name, String shortDescription, String longDescription) {
 		super(name, shortDescription, longDescription);
-		this.exits = new Room[6]; // size is your choice for how many exits you want
+		this.exits = new Room[7]; // size is your choice for how many exits you want
 	}
 		
 	public Room[] getExits() {
@@ -14,12 +14,11 @@ public class Room extends Fixture {
 		
 	}
 		
-	public Room getExit(String direction) {
+	public Room getExit(String direction, String action) {
 	//use the direction to return a Room from the exits array
-	/*For example if I always save the south exit at position 0 in my exits array when I define my code in the first
-	place, then I could write out logic like the following.*/
 		int index = 0;
 		direction = direction.toUpperCase();
+		
 		switch (direction) {
 		case "NORTH":
 			index = 0;
@@ -40,12 +39,13 @@ public class Room extends Fixture {
 			index = 5;
 			break;
 		default:
-			System.out.println("\nYour fingers must've slipped... where do you want to go?");
+			System.out.println("\n----Your fingers must've slipped... which \"DIRECTION\" do you want to go?----");
+			index = 6;
 		}
 		
 		// If statement checks if there is actually a room in certain direction
 		if (index >= this.exits.length || this.exits[index] == null) {
-			System.out.println("There is no room in that direction");
+			System.out.println("\nThere is no room in that direction");
 			
 			// Return the current room is there is not a room in that direction
 			return this;
@@ -54,9 +54,6 @@ public class Room extends Fixture {
 		return this.exits[index];
 		
 	}
-	
-	/*If you decide to include a getter like this then you should write out the logic for the other directions you
-	want to support.*/
 	
 	// Setter for the exits
 	public void setExits(Room[] exits) {

@@ -8,6 +8,8 @@ public class RoomManager {
 	private Room startingRoom;
 	private Room[] rooms;
 	
+	
+	// Constructor
 	public RoomManager(int roomCount) {
 		super();
 		rooms = new Room[roomCount];
@@ -58,8 +60,8 @@ public class RoomManager {
 		
 		Room bedroom1 = new Room("Bedroom 1", 
 				"a dark bedroom...", 
-				"This bedroom is the darkest of them all, only because the sun never directly hits it and the one " +
-				"window faces the south where the sun never shines. Inside is a single twin bed and dresser drawer. " +
+				"This bedroom is the darkest of them all, only because the sun never directly hits it and the one\n" +
+				"window faces the south where the sun never shines. Inside is a single twin bed and dresser drawer.\n" +
 				"There's a small desk by the window where a laptop sits.\n\n" +
 				"Exits:\n" +
 				"North: a narrow hallway...\n\n  Where should I go...\n");
@@ -67,8 +69,8 @@ public class RoomManager {
 		
 		Room bedroom2 = new Room("Bedroom 2", 
 				"a hot bedroom...", 
-				"This is by far the hottest room in the house. At least the yellow walls reflect some sunlight, " +
-				"however there's no stopping the evening sun from creating the house's very own sauna. " +
+				"This is by far the hottest room in the house. At least the yellow walls reflect some sunlight,\n" +
+				"however there's no stopping the evening sun from creating the house's very own sauna.\n" +
 				"Inside there's a bed, desk, and TV that gets used regularaly. The rest is random old things.\n\n" +
 				"Exits:\n" +
 				"NorthEast: a narrow hallway...\n\n  Where should I go...\n");
@@ -76,9 +78,9 @@ public class RoomManager {
 		
 		Room bathroom = new Room("Bathroom", 
 				"a pleasent bathroom...", 
-				"If there's one room in this house that's meticulous upkept, it would be this room. " +
-				"That's a good thing, because this is the most common room in the entire house. " +
-				"Pleasentries are nice here, trust me. Also there's a shower that doesn't really work, " +
+				"If there's one room in this house that's meticulous upkept, it would be this room.\n" +
+				"That's a good thing, because this is the most common room in the entire house.\n" +
+				"Pleasentries are nice here, trust me. Also there's a shower that doesn't really work,\n" +
 				"but trust me, all you need is the toilet.\n\n" +
 				"Exits:\n" +
 				"East: a narrow hallway...\n\n  Where should I go...\n");
@@ -86,9 +88,9 @@ public class RoomManager {
 		
 		Room masterBedroom = new Room("Master Bedroom", 
 				"a large master bedroom...", 
-				"The largest room in the house. This room has a California King sized bed along with " +
-				"it's own bathroom and shower. There's also a thingy with two sinks in the bathroom " +
-				"I just forgot what it's called. Plus there's an entryway into the backyard. You " +
+				"The largest room in the house. This room has a California King sized bed along with\n" +
+				"it's own bathroom and shower. There's also a thingy with two sinks in the bathroom\n" +
+				"I just forgot what it's called. Plus there's an entryway into the backyard. You\n" +
 				"can't beath that.\n\n" +
 				"Exits:\n" +
 				"North: a jungle of a backyard...\n" +
@@ -98,9 +100,9 @@ public class RoomManager {
 		
 		Room masterBathroom = new Room("Master Bathroom", 
 				"a master bathroom fit for kings of old...", 
-				"This is actually a super fancy bathroom for it's time. Since it's connected to the master " +
-				"bedroom it really ups the master bedroom. There's a shower and restroom in one and outside " +
-				"of it theres two sinks and a decently sized closet that's filled to the brim with the oldest " +
+				"This is actually a super fancy bathroom for it's time. Since it's connected to the master\n" +
+				"bedroom it really ups the master bedroom. There's a shower and restroom in one and outside\n" +
+				"of it theres two sinks and a decently sized closet that's filled to the brim with the oldest\n" +
 				"clothes you've ever seen.\n\n" +
 				"Exits:\n" +
 				"East: a large master bedroom...\n\n  Where should I go...\n");
@@ -108,9 +110,9 @@ public class RoomManager {
 		
 		Room backyard = new Room("Backyard", 
 				"a jungle of a backyard...", 
-				"This is probably now one of my favorite places here. It's a large backyard that spans " +
-				"the width of the house and has some of the most exotic plants you've ever seen. " + 
-				"In the past there have been dogs, lizards, cats, koi fish, cockatiels, and yes... a macaw parrot by " +
+				"This is probably now one of my favorite places here. It's a large backyard that spans\n" +
+				"the width of the house and has some of the most exotic plants you've ever seen.\n" + 
+				"In the past there have been dogs, lizards, cats, koi fish, cockatiels, and yes... a macaw parrot by\n" +
 				"the name of Goliath... who was sadly eaten by raccons... RIP\n\n" + 
 				"Exits:\n" +
 				"SouthWest: a large master bedroom...\n" +
@@ -156,12 +158,13 @@ public class RoomManager {
 		
 	}
 	
-	public Room getRoom(int index) {
-		return rooms[index];
+	
+	// Getters and Setters
+	public Room[] getRooms() {
+		return this.rooms;
 	}
 	
 	public Room getRoom(String roomName) {
-	//	int index = 0;
 		
 		for(int i=0; i<rooms.length; i++) {
 			if(roomName.toUpperCase() == rooms[i].getName().toUpperCase())
@@ -173,6 +176,15 @@ public class RoomManager {
 		return null;
 	}
 	
+	// Overloaded method
+	public Room getRoom(int index) {
+		return rooms[index];
+	}
+		
+	public void setRooms(Room[] rooms) {
+		this.rooms = rooms;
+	}
+		
 	public Room getStartingRoom() {
 		return this.startingRoom;
 	}
@@ -181,12 +193,6 @@ public class RoomManager {
 		this.startingRoom = startingRoom;
 	}
 	
-	public Room[] getRooms() {
-		return this.rooms;
-	}
-	
-	public void setRooms(Room[] rooms) {
-		this.rooms = rooms;
-	}
+
 	
 }// end class

@@ -4,8 +4,11 @@ import fixtures.Room;
 
 public class Player {
 	
+	// Instance Variables
 	private Room currentRoom;
 	
+	
+	// Getters and Setters
 	public Room getCurrentRoom() {
 		return currentRoom;
 		
